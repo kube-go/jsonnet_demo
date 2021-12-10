@@ -1,3 +1,4 @@
+(import "kubernetes.libsonnet") +
 (import "prometheus.jsonnet")+
 
 {
