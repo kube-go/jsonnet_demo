@@ -6,8 +6,8 @@
     "namespace": "environments/default/main.jsonnet"
   },
   "spec": {
-    "apiServer": "https://127.0.0.1:6443",
-    "namespace": "default",
+    "apiServer": "https://127.0.0.1:52585",
+    "namespace": "tanka",
     "resourceDefaults": {},
     "expectVersions": {}
   }
