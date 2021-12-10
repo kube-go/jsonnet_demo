@@ -4,7 +4,7 @@ Using jsonnet to generate kube manifests
 
 ## Motivation
 
-This project was created to learn jsonnet using [tanka](https://tanka.dev/). In this demo we will install prometheus using tanka to kubernetes cluster.
+This project was created to learn jsonnet using [tanka](https://tanka.dev/). In this demo we will install prometheus using tanka on a kubernetes cluster.
 
 ## Pre-requisites
 
