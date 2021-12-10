@@ -7,7 +7,7 @@
   },
   "spec": {
     "apiServer": "https://127.0.0.1:52585",
-    "namespace": "tanka",
+    "namespace": "default",
     "resourceDefaults": {},
     "expectVersions": {}
   }

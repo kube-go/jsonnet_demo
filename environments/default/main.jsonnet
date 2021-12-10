@@ -1,9 +1,18 @@
 {
+  _config:: {
+    namespace: {
+      name: "tanka"
+    },
+    prometheus: {
+      port: 9090,
+      name: "prometheus"
+    }
+  },
   my_namespace: {
     apiVersion: "v1",
     kind: "Namespace",
     metadata: {
-      name: "tanka",
+      name: $._config.namespace.name,
     },
   },
 
@@ -12,7 +21,11 @@
       apiVersion: 'apps/v1',
       kind: 'Deployment',
       metadata: {
-        name: 'prometheus',
+        name: $._config.prometheus.name,
+        labels: {
+          'app.kubernetes.io/name': $._config.prometheus.name,
+        },
+        namespace: $._config.namespace.name,
       },
       spec: {
         minReadySeconds: 10,
@@ -20,13 +33,13 @@
         revisionHistoryLimit: 10,
         selector: {
           matchLabels: {
-            name: 'prometheus',
+            'app.kubernetes.io/name': $._config.prometheus.name,
           },
         },
         template: {
           metadata: {
             labels: {
-              name: 'prometheus',
+              'app.kubernetes.io/name': $._config.prometheus.name,
             },
           },
           spec: {
@@ -34,7 +47,7 @@
               {
                 image: 'prom/prometheus',
                 imagePullPolicy: 'IfNotPresent',
-                name: 'prometheus',
+                name: $._config.prometheus.name,
                 ports: [
                   {
                     containerPort: 9090,
@@ -52,9 +65,10 @@
       kind: 'Service',
       metadata: {
         labels: {
-          name: 'prometheus',
+          'app.kubernetes.io/name': $._config.prometheus.name,
         },
-        name: 'prometheus',
+        name: $._config.prometheus.name,
+        namespace: $._config.namespace.name,
       },
       spec: {
         ports: [
@@ -65,7 +79,7 @@
           },
         ],
         selector: {
-          name: 'prometheus',
+          'app.kubernetes.io/name': $._config.prometheus.name,
         },
       },
     },
