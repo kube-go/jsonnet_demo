@@ -1,6 +1,6 @@
-# jsonnet_demo
+# jsonnet_with_tanka
 
-Using jsonnet to generate kube manifests
+Using jsonnet to generate kube manifests and deploy to kubernetes cluster
 
 ## Motivation
 
